@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Fireworks Background</title>
+  <link rel="stylesheet" href="style.css">
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+.firework-background {
+  height: 100vh;
+  background: url("https://thumbs.gfycat.com/BlandGranularAmethystgemclam-max-1mb.gif") center center fixed;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.firework {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: 0 0 20px 5px #fff;
+  animation: explode 2s forwards;
+}
+
+.firework__particles {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: 0 0 20px 5px #fff;
+  animation: explode-particles 2s forwards;
+}
+
+.quote-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.quote {
+  font-size: 3rem;
+  color: #fff;
+ display: none;
+ text-transform: capitalize;
+  
+}
+
+.quote.active {
+  opacity: 1;
+}
+
+.quote:nth-child(2) {
+  animation-delay: 10s;
+}
+
+.quote:nth-child(3) {
+  animation-delay: 15s;
+}
+
+.quote:nth-child(4) {
+  animation-delay: 20s;
+}
+
+@keyframes explode {
+  0% {
+    width: 10px;
+    height: 10px;
+    opacity: 1;
+  }
+  100% {
+    width: 500px;
+    height: 500px;
+    opacity: 0;
+  }
+}
+
+@keyframes explode-particles {
+  0% {
+    top: 50%;
+    left: 50%;
+  }
+  100% {
+    top: calc(50% - 250px);
+    left: calc(50% - 250px);
+  }
+}
+
+@keyframes fade-in-out {
+  0%, 90%, 100% {
+    opacity: 0;
+  }
+  5%, 85% {
+    opacity: 1;
+  }
+}
+
+</style>
+</head>
+<body>
+<div class="firework-background">
+  <div class="firework">
+    <div class="firework__particles"></div>
+    <div class="firework__particles"></div>
+    <div class="firework__particles"></div>
+    <div class="firework__particles"></div>
+    <div class="firework__particles"></div>
+    <div class="firework__particles"></div>
+    <div class="firework__particles"></div>
+    <div class="firework__particles"></div>
+    <div class="firework__particles"></div>
+    <div class="firework__particles"></div>
+  </div>
+  <div class="quote-container">
+    <div class="quote">If the stars were made to worship so will i</div>
+    <div class="quote">if the mountains bow in reverence so will i</div>
+    <div class="quote">if the oceans roar your greatness so will i</div>
+    <div class="quote">for if everything exists to lift you high so will i</div>
+  </div>
+</div>
+
+
+
+
+  <script>
+ const quotes = document.querySelectorAll('.quote');
+ let currentQuote =0;
+ function showQuote(){
+    quotes[currentQuote].style.display = 'none';
+    currentQuote = (currentQuote + 1)% quotes.length;
+    quotes[currentQuote].style.display = 'block';
+
+ }
+ showQuote();
+ setInterval(showQuote, 5000);
+  </script>
+</body>
+</html>
